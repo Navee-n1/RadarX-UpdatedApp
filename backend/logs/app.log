@@ -1,0 +1,30 @@
+[2025-07-10 09:58:36] INFO: JD-to-Resumes Match Request Received for JD ID: 1
+[2025-07-10 09:58:36] INFO: JD-to-Resumes Match Request Received for JD ID: 1
+[2025-07-10 09:59:21] INFO: Matching complete. Returning top 3 profiles.
+[2025-07-10 09:59:21] INFO: Matching complete. Returning top 3 profiles.
+[2025-07-10 10:01:28] INFO:  Preparing to send email to: maheshmurari001@gmail.com
+[2025-07-10 10:01:28] DEBUG:  CC List: []
+[2025-07-10 10:01:28] DEBUG: Attachments: []
+[2025-07-10 10:01:32] INFO: Email sent successfully to: maheshmurari001@gmail.com
+[2025-07-10 10:02:07] INFO: JD-to-Resumes Match Request Received for JD ID: 2
+[2025-07-10 10:02:37] INFO: Matching complete. Returning top 3 profiles.
+[2025-07-10 10:04:46] INFO: JD-to-Resumes Match Request Received for JD ID: 3
+[2025-07-10 10:04:46] INFO: JD-to-Resumes Match Request Received for JD ID: 3
+[2025-07-10 10:05:27] INFO: Matching complete. Returning top 3 profiles.
+[2025-07-10 10:05:27] INFO: Matching complete. Returning top 3 profiles.
+[2025-07-10 12:01:15] INFO: JD-to-Resumes Match Request Received for JD ID: 5
+[2025-07-10 12:01:15] INFO: JD-to-Resumes Match Request Received for JD ID: 5
+[2025-07-10 12:01:31] INFO: Matching complete. Returning top 0 profiles.
+[2025-07-10 12:01:31] INFO: Matching complete. Returning top 0 profiles.
+[2025-07-10 12:01:52] INFO: JD-to-Resumes Match Request Received for JD ID: 6
+[2025-07-10 12:01:52] INFO: JD-to-Resumes Match Request Received for JD ID: 6
+[2025-07-10 12:02:05] INFO: Matching complete. Returning top 0 profiles.
+[2025-07-10 12:02:06] INFO: Matching complete. Returning top 0 profiles.
+[2025-07-10 12:12:16] INFO: JD-to-Resumes Match Request Received for JD ID: 7
+[2025-07-10 12:12:16] INFO: JD-to-Resumes Match Request Received for JD ID: 7
+[2025-07-10 12:12:28] INFO: Matching complete. Returning top 0 profiles.
+[2025-07-10 12:12:28] INFO: Matching complete. Returning top 0 profiles.
+[2025-07-10 12:29:45] INFO: JD-to-Resumes Match Request Received for JD ID: 8
+[2025-07-10 12:29:46] INFO: JD-to-Resumes Match Request Received for JD ID: 8
+[2025-07-10 12:30:53] INFO: Matching complete. Returning top 3 profiles.
+[2025-07-10 12:30:56] INFO: Matching complete. Returning top 3 profiles.

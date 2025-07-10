@@ -1,0 +1,5 @@
+2025-07-10 10:01:28,104 - INFO - Manual email triggered for JD ID 1 to maheshmurari001@gmail.com with 2 matches.
+2025-07-10 10:01:28,110 - INFO - No recommended matches. Email will be sent without attachments.
+2025-07-10 10:01:28,110 - INFO - Building HTML summary for 0 strong matches
+2025-07-10 10:01:28,110 - INFO - No strong matches found for email summary
+2025-07-10 10:01:32,598 - INFO - Email log saved to database.

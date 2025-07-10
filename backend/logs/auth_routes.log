@@ -1,0 +1,24 @@
+2025-07-10 09:50:27,490 - INFO - Login attempt for email: maheshmurari001@gmail.com
+2025-07-10 09:50:27,550 - INFO - Login successful for email: maheshmurari001@gmail.com
+2025-07-10 09:50:37,392 - INFO - Login attempt for email: maheshmurari003@gmail.com
+2025-07-10 09:50:37,392 - WARNING - Login failed: User with email maheshmurari003@gmail.com not found
+2025-07-10 09:50:40,306 - INFO - Login attempt for email: maheshmurari003@gmail.com
+2025-07-10 09:50:40,306 - WARNING - Login failed: User with email maheshmurari003@gmail.com not found
+2025-07-10 09:51:03,204 - INFO - Login attempt for email: addepallinaveenkumar85@gmail.com
+2025-07-10 09:51:03,212 - INFO - Login successful for email: addepallinaveenkumar85@gmail.com
+2025-07-10 09:58:27,127 - INFO - Login attempt for email: maheshmurari001@gmail.com
+2025-07-10 09:58:27,127 - INFO - Login successful for email: maheshmurari001@gmail.com
+2025-07-10 11:17:57,453 - INFO - Login attempt for email: addepallinaveenkumar85@gmail.com
+2025-07-10 11:17:57,457 - INFO - Login successful for email: addepallinaveenkumar85@gmail.com
+2025-07-10 12:00:56,513 - INFO - Login attempt for email: maheshmurari001@gmail.com
+2025-07-10 12:00:56,522 - INFO - Login successful for email: maheshmurari001@gmail.com
+2025-07-10 12:24:09,157 - INFO - Login attempt for email: ab@gmail.com
+2025-07-10 12:24:09,173 - INFO - Login successful for email: ab@gmail.com
+2025-07-10 12:29:36,507 - INFO - Login attempt for email: maheshmurari001@gmail.com
+2025-07-10 12:29:36,514 - INFO - Login successful for email: maheshmurari001@gmail.com
+2025-07-10 13:14:38,598 - INFO - Login attempt for email: addepallinaveenkumar85@gmail.com
+2025-07-10 13:14:38,608 - INFO - Login successful for email: addepallinaveenkumar85@gmail.com
+2025-07-10 13:14:43,664 - INFO - Login attempt for email: ab@gmail.com
+2025-07-10 13:14:43,664 - INFO - Login successful for email: ab@gmail.com
+2025-07-10 13:14:53,273 - INFO - Login attempt for email: addepallinaveenkumar85@gmail.com
+2025-07-10 13:14:53,280 - INFO - Login successful for email: addepallinaveenkumar85@gmail.com

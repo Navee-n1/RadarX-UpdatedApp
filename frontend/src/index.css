@@ -1,0 +1,21 @@
+/*
+  The following lines require Tailwind CSS and PostCSS setup.
+  If you see "Unknown at rule @tailwind", ensure your build tool is configured to use Tailwind.
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#0b0b0b] text-black font-sans tracking-wide;
+}
+
+.bg-glass {
+  background-color: rgb(17, 17, 17);
+  backdrop-filter: blur(8px);
+  color: black
+}
+
+button {
+  transition: all 0.3s ease;
+}
