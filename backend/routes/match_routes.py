@@ -39,86 +39,78 @@ def match_jd_to_profiles():
     if not jd_text:
         return jsonify({"error": "Failed to extract JD text"}), 500
 
-    # Read match threshold from config
-    
-
     all_matches = []
-    for profile in Profile.query.all():
-        try:
-            resume_text = profile.extracted_text or extract_text(profile.resume_path)
-            if not resume_text:
+
+    with db.session.no_autoflush:
+        for profile in Profile.query.all():
+            try:
+                resume_text = profile.extracted_text or extract_text(profile.resume_path)
+                if not resume_text:
+                    continue
+
+                start_time = time.time()
+
+                score = compute_full_text_score(
+                    jd_embedding_str=jd.embedding_vector,
+                    profile_embedding_str=profile.embedding_vector,
+                    jd_text=jd_text,
+                    profile_text=resume_text,
+                    vertical=profile.vertical,
+                    experience_years=profile.experience_years,
+                    profile_skills=profile.skills,
+                    profile_projects=getattr(profile, 'projects', None),
+                    profile_certifications=getattr(profile, 'certifications', None)
+                )
+
+                explanation_start = time.time()
+                explanation = generate_explanation(jd_text, resume_text, use_gpt=True)
+                explanation_latency = round(time.time() - explanation_start, 4)
+                latency = round(time.time() - start_time, 4)
+
+                label = get_label(score)
+
+                match = MatchResult(
+                    jd_id=jd.id,
+                    profile_id=profile.id,
+                    resume_id=None,
+                    score=round(score, 4),
+                    explanation=json.dumps(truncate_explanation_fields(explanation)),
+                    match_type='jd-to-resume',
+                    method=explanation.get("source", "MultiScore"),
+                    latency=latency,
+                    explanation_latency=explanation_latency
+                )
+                db.session.add(match)
+
+                all_matches.append({
+                    "resume_id": None,
+                    "profile_id": profile.id,
+                    "emp_id": profile.emp_id,
+                    "name": profile.name,
+                    "email": profile.email,
+                    "vertical": profile.vertical,
+                    "role": profile.role,
+                    "status": profile.status,
+                    "resume_path": profile.resume_path,
+                    "score": round(score, 4),
+                    "label": label,
+                    "explanation": explanation,
+                    "latency": latency,
+                    "rank": len(all_matches) + 1
+                })
+
+            except Exception as e:
+                db.session.rollback()
+                log_agent_error("MatchError", str(e), method="jd-to-resume")
                 continue
 
-            start_time = time.time()
-            
-            score = compute_full_text_score(
-    jd_embedding_str=jd.embedding_vector,
-    profile_embedding_str=profile.embedding_vector,
-    jd_text=jd_text,
-    profile_text=profile.extracted_text,
-    vertical=profile.vertical,
-    experience_years=profile.experience_years,
-    profile_skills=profile.skills,
-    profile_projects=profile.projects if hasattr(profile, 'projects') else None,
-    profile_certifications=profile.certifications if hasattr(profile, 'certifications') else None
-)
-
-
-
-            explanation_start = time.time()
-            explanation = generate_explanation(jd_text, resume_text, use_gpt=True)
-
-            explanation_latency = round(time.time() - explanation_start, 4)
-            latency = round(time.time() - start_time, 4)
-            label=get_label(score)
-
-            match = MatchResult(
-                jd_id=jd.id,
-                profile_id=profile.id,
-                resume_id=None,
-                score=round(score,4),
-                explanation=json.dumps(truncate_explanation_fields(explanation)),
-                match_type='jd-to-resume',
-                method=explanation.get("source", "MultiScore"),
-                latency=latency,
-                explanation_latency=explanation_latency
-            )
-            db.session.add(match)
-
-            all_matches.append({
-                "resume_id": None,
-                "profile_id": profile.id,
-                "emp_id": profile.emp_id,
-                "name": profile.name,
-                "email": profile.email,
-                "vertical": profile.vertical,
-                "role": profile.role,
-                "status": profile.status,
-                "resume_path": profile.resume_path,
-                "score": round(score,4),
-                "label": label,
-                "explanation": explanation,
-                "latency": latency,
-                "rank": len(all_matches) + 1
-            })
-
-        except Exception as e:
-            db.session.rollback()
-            log_agent_error("MatchError", str(e), method="jd-to-resume")
-
     try:
+        jd.status = "Review"
         db.session.commit()
     except Exception as e:
         db.session.rollback()
         log_agent_error("DBCommitError", str(e), method="jd-to-resume")
         return jsonify({"error": "Database commit failed"}), 500
-
-    # Mark JD as processed
-    jd.status = "Review"
-    try:
-        db.session.commit()
-    except:
-        db.session.rollback()
 
     # Deduplicate by emp_id
     seen_ids = set()

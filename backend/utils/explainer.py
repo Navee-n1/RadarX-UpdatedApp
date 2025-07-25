@@ -8,7 +8,7 @@ from models import Config
 from flask import current_app as app
 
 # ✅ Use BGE embedding model
-model = SentenceTransformer('BAAI/bge-base-en-v1.5')
+model = SentenceTransformer("all-MiniLM-L6-v2")
 MAX_SUMMARY_CHARS = 2000
 
 BONUS_SIGNALS = [

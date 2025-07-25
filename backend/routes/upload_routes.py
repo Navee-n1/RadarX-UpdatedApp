@@ -22,7 +22,7 @@ from utils.parser import extract_certifications, extract_projects, extract_exper
 UPLOAD_FOLDER = 'resumes'
 
 
-domain_model = SentenceTransformer("BAAI/bge-base-en-v1.5")
+domain_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 upload_bp = Blueprint('upload_bp', __name__)
 

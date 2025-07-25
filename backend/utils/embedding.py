@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer
 
 # Load BGE model (optimized for role-specific embeddings)
-model = SentenceTransformer("BAAI/bge-base-en-v1.5")
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
 def generate_embedding(text, instruction="Represent this as a candidate profile"):
     """

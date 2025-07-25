@@ -6,8 +6,8 @@ from utils.utils import log_agent_error
 from utils.skill_extractor import extract_skills_contextual
 from utils.parser import extract_certifications, extract_projects
 
-# 🔁 Use BGE embedding model
-model = SentenceTransformer("BAAI/bge-base-en-v1.5")
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # ──────────────────────────────────────
 # Boost Categories
@@ -74,17 +74,29 @@ def compute_full_text_score(
         uniqueness_score = semantic_signal_score(profile_text, HUMAN_SIGNAL_CONCEPTS)
         vertical_boost = vertical_signal_score(jd_text, vertical)
 
-        total_score = (
-            cosine_score * 0.5 +
-            skill_score * 0.15 +
-            experience_score * 0.1 +
-            project_alignment * 0.1 +
-            certification_boost * 0.05 +
-            uniqueness_score * 0.05 +
-            vertical_boost * 0.05
-        )
 
-        return round(min(total_score, 1.0), 4)
+
+
+        total_score = (
+            cosine_score * 0.6 +
+            skill_score * 0.20 +
+            experience_score * 0.05 +
+            project_alignment * 0.06 +
+            certification_boost * 0.04 +
+            uniqueness_score * 0.025 +
+            vertical_boost * 0.025
+        )
+        
+        
+
+
+
+
+
+        compute=min(total_score * 1.35,1.0)
+        
+
+        return round(compute, 4)
 
     except Exception as e:
         log_agent_error("ScoringError", str(e), method="compute_full_text_score")

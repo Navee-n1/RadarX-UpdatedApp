@@ -87,7 +87,7 @@ const recommendedMatches = topMatches.filter(m => m.score >= 0.5);
      active: recommended,
 failed: !recommended && ranked,
 details: recommended
-  ? `✓ ${recommendedMatches.length} profile${recommendedMatches.length > 1 ? 's' : ''} recommended`
+  ? `✓ profile${recommendedMatches.length > 1 ? 's' : ''} recommended`
   : '⚠ No profiles met the quality threshold',
 
     },

@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 # Extract Raw Text from Resume or JD
 # ─────────────────────────────────────────────
 
-model = SentenceTransformer("BAAI/bge-base-en-v1.5")
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
 VERTICAL_SIGNAL_CONCEPTS = {
     "GEN-AI": "generative ai, prompt engineering, llm applications",

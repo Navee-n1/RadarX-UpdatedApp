@@ -17,7 +17,7 @@ def get_jd_status(jd_id):
     ranked = MatchResult.query.filter_by(jd_id=jd_id).count() > 0
 
     # Check: any recommended matches
-    recommended_found = MatchResult.query.filter_by(jd_id=jd_id).filter(MatchResult.score >= 0.5).count() > 0
+    recommended_found = MatchResult.query.filter_by(jd_id=jd_id).filter(MatchResult.score >= 0.50).count() > 0
 
     # Check: email sent
     from models import EmailLog
